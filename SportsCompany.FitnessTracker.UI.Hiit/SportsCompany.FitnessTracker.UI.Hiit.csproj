@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E51663CB-F0CF-4970-A99D-2054901DD3A2}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>SportsCompany.FitnessTracker.UI.Hiit</RootNamespace>
+    <AssemblyName>SportsCompany.FitnessTracker.UI.Hiit</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HiitEditor\ExerciseViewModel.cs" />
+    <Compile Include="HiitEditor\HiitEditorViewModel.cs" />
+    <Compile Include="HiitEditor\IHiitEditorView.cs" />
+    <Compile Include="HiitEditor\RoundViewModel.cs" />
+    <Compile Include="HiitEditor\UiCommands\AddRoundUiCommand.cs" />
+    <Compile Include="HiitEditor\UiCommands\SaveUiCommand.cs" />
+    <Compile Include="HiitTraing\HiitTrainViewModel.cs" />
+    <Compile Include="HiitTraing\HiitTrainView.xaml.cs">
+      <DependentUpon>HiitTrainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HiitTraing\IHiitTrainView.cs" />
+    <Compile Include="HiitTraing\UiCommands\CloseUiCommand.cs" />
+    <Compile Include="HiitTraing\UiCommands\StartTrainingUiCommand.cs" />
+    <Compile Include="HiitTraing\UiCommands\StopTrainingUiCommand.cs" />
+    <Compile Include="UiHiitInitializer.cs" />
+    <Page Include="HiitEditor\HiitEditorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="HiitEditor\HiitEditorView.xaml.cs">
+      <DependentUpon>HiitEditorView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="HiitMain\HiitMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HiitTraing\HiitTrainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HiitMain\HiitMainView.xaml.cs">
+      <DependentUpon>HiitMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HiitMain\HiitTrainingViewModel.cs" />
+    <Compile Include="HiitMain\HiitMainViewModel.cs" />
+    <Compile Include="HiitMain\IHiitMainView.cs" />
+    <Compile Include="HiitMain\UiCommands\OpenCreateNewTrainingCommand.cs" />
+    <Compile Include="HiitMain\UiCommands\OpenSelectedTrainingCommand.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Unity">
+      <Version>5.11.9</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SportsCompany.FitnessTracker.Hiit.Contracts\SportsCompany.FitnessTracker.Hiit.Contracts.csproj">
+      <Project>{ee573fff-6434-4d3f-968a-0d3f18456063}</Project>
+      <Name>SportsCompany.FitnessTracker.Hiit.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
