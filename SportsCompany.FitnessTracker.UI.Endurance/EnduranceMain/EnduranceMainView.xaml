@@ -11,6 +11,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
         </Grid.RowDefinitions>
 
         <Label Grid.Row="0" Content="For simplicity only Runs:" />
@@ -19,5 +21,7 @@
                  ItemsSource="{Binding EnduranceItems}"/>
 
         <Button Grid.Row="2" Content="Start a new run" Command="{Binding OpenNewEnduranceUiCommand}" CommandParameter="{Binding}" />
+        <Button Grid.Row="3" Content="New Random Purchase" Command="{Binding OpenNewPurchaseUiCommand}" CommandParameter="{Binding}" />
+
     </Grid>
 </Window>

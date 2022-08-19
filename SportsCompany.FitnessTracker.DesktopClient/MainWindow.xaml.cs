@@ -1,12 +1,8 @@
 ﻿using SportsCompany.FitnessTracker.DesktopClient.UiCommands;
-using SportsCompany.FitnessTracker.Endurance.BoundedContext;
-using SportsCompany.FitnessTracker.Endurance.ServiceMock;
-using SportsCompany.FitnessTracker.Endurance.WinEnvironment;
-using SportsCompany.FitnessTracker.Hiit.BoundedContext;
-using SportsCompany.FitnessTracker.Hiit.WinEnvironment;
-using SportsCompany.FitnessTracker.Peripherals.BoundedContext;
+using SportsCompany.FitnessTracker.Domain;
 using SportsCompany.FitnessTracker.UI.Endurance;
-using SportsCompany.FitnessTracker.UI.Hiit;
+using SportsCompany.UIFramework;
+using SportsCompany.UIFramework.Windows;
 using System.Windows;
 using System.Windows.Input;
 using Unity;
@@ -25,33 +21,15 @@ namespace SportsCompany.FitnessTracker.DesktopClient
         {
             InitializeComponent();
 
-            unityContainer = new UnityContainer();
+            var container = UiFrameworkWindows.Initialize();
 
-            UiHiitInitializer.Init(unityContainer);
-            HiitBoundedContextInitializer.Init(unityContainer);
-            HiitWinInitializer.Init(unityContainer);
+            UiEnduranceInitializer.Init(container);
+            EnduranceDomainInitializer.Initialize(container);
 
-            UiEnduranceInitializer.Init(unityContainer);
+            container.RegisterSingleton<MainWindowViewModel, MainWindowViewModel>();
+            container.Register<ITriggeredCommand, StartRunningUiCommand>(nameof(StartRunningUiCommand));
 
-            var useServiceImplementation = false;
-            if (useServiceImplementation)
-            {
-                EnduranceServiceMockInitializer.Init(unityContainer);
-            }
-            else
-            {
-                EnduranceBoundedContextInitializer.Init(unityContainer);
-                EnduranceWinInitializer.Init(unityContainer);
-            }
-            
-            PeripheralBoundedContextInitializer.Init(unityContainer);
-
-            unityContainer.RegisterType<MainWindowViewModel>(new ContainerControlledLifetimeManager());
-
-            unityContainer.RegisterType<ICommand, StartRunningUiCommand>(nameof(StartRunningUiCommand));
-            unityContainer.RegisterType<ICommand, StartHiitUiCommand>(nameof(StartHiitUiCommand));
-
-            DataContext = unityContainer.Resolve<MainWindowViewModel>();
+            DataContext = container.Resolve<MainWindowViewModel>();
         }
     }
 }

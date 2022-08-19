@@ -1,5 +1,6 @@
-﻿using System;
-using System.ComponentModel;
+﻿using SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.Interfaces;
+using SportsCompany.UIFramework;
+using System;
 using System.Windows.Input;
 using Unity;
 
@@ -8,8 +9,15 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity
     /// <summary>
     /// View model for the view of an endurance activity.
     /// </summary>
-    class EnduranceActivityViewModel : INotifyPropertyChanged
+    class EnduranceActivityViewModel : ViewModelBase, IEnduranceActivityViewModel
     {
+        public EnduranceActivityViewModel(IEnduranceActivityEnvironment environment)
+        {
+            StartActivityUiCommand = environment.Resolve<ICommand>(nameof(UiCommands.StartActivityUiCommand));
+            StopActivityUiCommand = environment.Resolve<ICommand>(nameof(UiCommands.StopActivityUiCommand));
+            SaveActivityUiCommand = environment.Resolve<ICommand>(nameof(UiCommands.SaveActivityUiCommand));
+        }
+
         private string state;
 
         /// <summary>
@@ -93,27 +101,16 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity
         /// <summary>
         /// Ui command to start the activity.
         /// </summary>
-        [Dependency(nameof(UiCommands.StartActivityUiCommand))]
         public ICommand StartActivityUiCommand { get; set; }
 
         /// <summary>
         /// Ui command to stop the activity.
         /// </summary>
-        [Dependency(nameof(UiCommands.StopActivityUiCommand))]
         public ICommand StopActivityUiCommand { get; set; }
 
         /// <summary>
         /// Ui command to save the activity.
         /// </summary>
-        [Dependency(nameof(UiCommands.SaveActivityUiCommand))]
         public ICommand SaveActivityUiCommand { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string v)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(v));
-        }
     }
 }

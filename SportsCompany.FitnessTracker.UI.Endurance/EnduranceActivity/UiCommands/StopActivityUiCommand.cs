@@ -1,4 +1,6 @@
-﻿using SportsCompany.FitnessTracker.Endurance.Contracts;
+﻿using SportsCompany.FitnessTracker.Domain;
+using SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.Interfaces;
+using SportsCompany.UIFramework;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -8,7 +10,7 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.UiCommands
     /// <summary>
     /// Ui Command to open the stop the last endurance activity.
     /// </summary>
-    class StopActivityUiCommand : ICommand
+    class StopActivityUiCommand : UICommandBase<IEnduranceActivityViewModel>
     {
         private readonly ITrainingService trainingService;
 
@@ -16,9 +18,8 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.UiCommands
         {
             this.trainingService = trainingService;
         }
-        public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
+        protected override bool CanExecute(IEnduranceActivityViewModel parameter)
         {
             return true;
         }
@@ -26,11 +27,10 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.UiCommands
         /// <summary>
         /// Command execution.
         /// </summary>
-        public void Execute(object parameter)
+        protected override void Execute(IEnduranceActivityViewModel viewModel)
         {
             try
             {
-                var viewModel = parameter as EnduranceActivityViewModel;
                 if (viewModel == null)
                     return;
 

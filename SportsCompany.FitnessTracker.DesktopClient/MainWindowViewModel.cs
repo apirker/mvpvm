@@ -1,23 +1,22 @@
-﻿using System.Windows.Input;
-using Unity;
+﻿using SportsCompany.DependencyInjection;
+using SportsCompany.UIFramework;
+using System.Windows.Input;
 
 namespace SportsCompany.FitnessTracker.DesktopClient
 {
     /// <summary>
     /// Main view model of the first window.
     /// </summary>
-    public class MainWindowViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
-        /// <summary>
-        /// Ui command to open the HIIT area.
-        /// </summary>
-        [Dependency(nameof(UiCommands.StartHiitUiCommand))]
-        public ICommand StartHiitUiCommand { get; set; }
-
+        public MainWindowViewModel(IContainer container)
+        {
+            StartRunningUiCommand = container.Resolve<ITriggeredCommand>(nameof(UiCommands.StartRunningUiCommand));
+            StartRunningUiCommand.TriggerCanExecuteChanged();
+        }
         /// <summary>
         /// Ui command to open the running.
         /// </summary>
-        [Dependency(nameof(UiCommands.StartRunningUiCommand))]
-        public ICommand StartRunningUiCommand { get; set; }
+        public ITriggeredCommand StartRunningUiCommand { get; set; }
     }
 }

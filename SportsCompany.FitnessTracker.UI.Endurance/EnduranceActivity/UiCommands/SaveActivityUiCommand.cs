@@ -1,26 +1,26 @@
-﻿using SportsCompany.FitnessTracker.Endurance.Contracts;
+﻿using SportsCompany.FitnessTracker.Domain;
+using SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.Interfaces;
+using SportsCompany.UIFramework;
 using System;
 using System.Windows;
-using System.Windows.Input;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.UiCommands
 {
     /// <summary>
     /// Ui Command to to save the last endurance activity.
     /// </summary>
-    class SaveActivityUiCommand : ICommand
+    class SaveActivityUiCommand : UICommandBase<IEnduranceActivityViewModel>
     {
-        private readonly IEnduranceActivityView view;
         private readonly ITrainingService trainingService;
+        private readonly IEnduranceActivityEnvironment enduranceActivityEnvironment;
 
-        public SaveActivityUiCommand(IEnduranceActivityView view, ITrainingService trainingService)
+        public SaveActivityUiCommand(ITrainingService trainingService, IEnduranceActivityEnvironment enduranceActivityEnvironment)
         {
-            this.view = view;
             this.trainingService = trainingService;
+            this.enduranceActivityEnvironment = enduranceActivityEnvironment;
         }
-        public event EventHandler CanExecuteChanged;
 
-        public bool CanExecute(object parameter)
+        protected override bool CanExecute(IEnduranceActivityViewModel parameter)
         {
             return true;
         }
@@ -28,12 +28,14 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.UiCommands
         /// <summary>
         /// Command execution.
         /// </summary>
-        public void Execute(object parameter)
+        protected override void Execute(IEnduranceActivityViewModel parameter)
         {
             try
             {
                 trainingService.SaveTraining();
-                view.Close();
+
+                var presenter = enduranceActivityEnvironment.Resolve<IEnduranceActivityPresenter>();
+                presenter.Close();
             }
             catch(Exception)
             {

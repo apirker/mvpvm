@@ -1,5 +1,6 @@
-﻿using SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain;
-using Unity;
+﻿using SportsCompany.DependencyInjection;
+using SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain;
+using SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain.Interfaces;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance
 {
@@ -8,9 +9,10 @@ namespace SportsCompany.FitnessTracker.UI.Endurance
     /// </summary>
     public static class UiEnduranceInitializer
     {
-        public static void Init(IUnityContainer unityContainer)
+        public static void Init(IContainer container)
         {
-            unityContainer.RegisterType<IEnduranceMainView, EnduranceMainView>();
+            container.Register<IEnduranceMainPresenter, EnduranceMainPresenter>();
+            container.Register<IEnduranceMainEnvironment, EnduranceMainProductionEnvironment>();
         }
     }
 }

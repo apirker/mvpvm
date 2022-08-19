@@ -1,6 +1,5 @@
-﻿using SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain;
-using System;
-using System.Windows.Input;
+﻿using SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain.Interfaces;
+using SportsCompany.UIFramework;
 using Unity;
 
 namespace SportsCompany.FitnessTracker.DesktopClient.UiCommands
@@ -8,7 +7,7 @@ namespace SportsCompany.FitnessTracker.DesktopClient.UiCommands
     /// <summary>
     /// Ui Command to open the running UI.
     /// </summary>
-    class StartRunningUiCommand : ICommand
+    class StartRunningUiCommand : UICommandBase<MainWindowViewModel>
     {
         private readonly IUnityContainer unityContainer;
 
@@ -17,9 +16,7 @@ namespace SportsCompany.FitnessTracker.DesktopClient.UiCommands
             this.unityContainer = unityContainer;
         }
 
-        public event EventHandler CanExecuteChanged;
-
-        public bool CanExecute(object parameter)
+        protected override bool CanExecute(MainWindowViewModel parameter)
         {
             return true;
         }
@@ -27,9 +24,10 @@ namespace SportsCompany.FitnessTracker.DesktopClient.UiCommands
         /// <summary>
         /// Command execution.
         /// </summary>
-        public void Execute(object parameter)
+        protected override void Execute(MainWindowViewModel parameter)
         {
-            unityContainer.Resolve<IEnduranceMainView>().Show();
+            var view = unityContainer.Resolve<IEnduranceMainPresenter>().Show(null);
+            view.Show();
         }
     }
 }

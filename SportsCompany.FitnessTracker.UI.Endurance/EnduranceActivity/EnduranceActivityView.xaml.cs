@@ -1,4 +1,5 @@
-﻿using SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.UiCommands;
+﻿using SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.Interfaces;
+using SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity.UiCommands;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -12,22 +13,11 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity
     /// </summary>
     public partial class EnduranceActivityView : Window, IEnduranceActivityView
     {
-        private readonly IUnityContainer unityContainer;
-
-        public EnduranceActivityView(IUnityContainer unityContainer)
+        public EnduranceActivityView(IEnduranceActivityViewModel viewModel)
         {
             InitializeComponent();
-
-            this.unityContainer = unityContainer.CreateChildContainer();
-
-            this.unityContainer.RegisterInstance(this as IEnduranceActivityView, new ContainerControlledLifetimeManager());
-            this.unityContainer.RegisterType<EnduranceActivityViewModel>(new ContainerControlledLifetimeManager());
             
-            this.unityContainer.RegisterType<ICommand, StartActivityUiCommand>(nameof(StartActivityUiCommand));
-            this.unityContainer.RegisterType<ICommand, StopActivityUiCommand>(nameof(StopActivityUiCommand));
-            this.unityContainer.RegisterType<ICommand, SaveActivityUiCommand>(nameof(SaveActivityUiCommand));
-
-            DataContext = this.unityContainer.Resolve<EnduranceActivityViewModel>();
+            DataContext = viewModel;
         }
 
         public event EventHandler ViewClosed;
@@ -35,8 +25,6 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity
         public new void Close()
         {
             base.Close();
-
-            unityContainer.Dispose();
 
             if (ViewClosed != null)
                 ViewClosed(this, EventArgs.Empty);

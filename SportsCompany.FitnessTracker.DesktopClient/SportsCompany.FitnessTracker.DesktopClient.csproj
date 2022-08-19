@@ -55,7 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UiCommands\StartHiitUiCommand.cs" />
     <Compile Include="UiCommands\StartRunningUiCommand.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -103,37 +102,25 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.Endurance.BoundedContext\SportsCompany.FitnessTracker.Endurance.BoundedContext.csproj">
-      <Project>{ea04f2ce-e810-44ff-9d4d-d4efa75222e2}</Project>
-      <Name>SportsCompany.FitnessTracker.Endurance.BoundedContext</Name>
+    <ProjectReference Include="..\SportsCompany.FitnessTracker.DependencyInjection\SportsCompany.FitnessTracker.DependencyInjection.csproj">
+      <Project>{7901912c-0b2f-41bf-aabe-479041902ef8}</Project>
+      <Name>SportsCompany.FitnessTracker.DependencyInjection</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.Endurance.ServiceMock\SportsCompany.FitnessTracker.Endurance.ServiceMock.csproj">
-      <Project>{6e47bdd1-f162-4cfd-9265-88f56be8f183}</Project>
-      <Name>SportsCompany.FitnessTracker.Endurance.ServiceMock</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.Endurance.WinEnvironment\SportsCompany.FitnessTracker.Endurance.WinEnvironment.csproj">
-      <Project>{84a723fc-d4f3-4462-bb07-4fbe5152ec28}</Project>
-      <Name>SportsCompany.FitnessTracker.Endurance.WinEnvironment</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.Hiit.BoundedContext\SportsCompany.FitnessTracker.Hiit.BoundedContext.csproj">
-      <Project>{67e8cadd-088c-42c5-ae26-4875b50d5fc9}</Project>
-      <Name>SportsCompany.FitnessTracker.Hiit.BoundedContext</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.Hiit.WinEnvironment\SportsCompany.FitnessTracker.Hiit.WinEnvironment.csproj">
-      <Project>{981896a9-150c-448d-9a21-ba0a771c4cf6}</Project>
-      <Name>SportsCompany.FitnessTracker.Hiit.WinEnvironment</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.Peripherals.BoundedContext\SportsCompany.FitnessTracker.Peripherals.BoundedContext.csproj">
-      <Project>{8746e9ea-a878-47bc-ad0e-029b4dbb5548}</Project>
-      <Name>SportsCompany.FitnessTracker.Peripherals.BoundedContext</Name>
+    <ProjectReference Include="..\SportsCompany.FitnessTracker.Domain\SportsCompany.FitnessTracker.Domain.csproj">
+      <Project>{5e2c7039-066b-4951-a448-2aa60b6dc97b}</Project>
+      <Name>SportsCompany.FitnessTracker.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SportsCompany.FitnessTracker.UI.Endurance\SportsCompany.FitnessTracker.UI.Endurance.csproj">
       <Project>{3a2a47a8-c0e4-418d-8aef-5b587466901e}</Project>
       <Name>SportsCompany.FitnessTracker.UI.Endurance</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.UI.Hiit\SportsCompany.FitnessTracker.UI.Hiit.csproj">
-      <Project>{e51663cb-f0cf-4970-a99d-2054901dd3a2}</Project>
-      <Name>SportsCompany.FitnessTracker.UI.Hiit</Name>
+    <ProjectReference Include="..\SportsCompany.UIFramework.Windows\SportsCompany.UIFramework.Windows.csproj">
+      <Project>{d442c78f-398c-4ac1-bd0b-074e9e5ced0f}</Project>
+      <Name>SportsCompany.UIFramework.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsCompany.UIFramework\SportsCompany.UIFramework.csproj">
+      <Project>{a957ec1c-cc28-42fb-aa03-b0ef50500550}</Project>
+      <Name>SportsCompany.UIFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

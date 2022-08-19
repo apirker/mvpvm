@@ -48,21 +48,32 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnduranceActivity\EnduranceActivityPresenter.cs" />
+    <Compile Include="EnduranceActivity\EnduranceActivityProductionEnvironment.cs" />
     <Compile Include="EnduranceActivity\EnduranceActivityView.xaml.cs">
       <DependentUpon>EnduranceActivityView.xaml</DependentUpon>
     </Compile>
     <Compile Include="EnduranceActivity\EnduranceActivityViewModel.cs" />
-    <Compile Include="EnduranceActivity\IEnduranceActivityView.cs" />
+    <Compile Include="EnduranceActivity\Interfaces\IEnduranceActivityEnvironment.cs" />
+    <Compile Include="EnduranceActivity\Interfaces\IEnduranceActivityPresenter.cs" />
+    <Compile Include="EnduranceActivity\Interfaces\IEnduranceActivityView.cs" />
+    <Compile Include="EnduranceActivity\Interfaces\IEnduranceActivityViewModel.cs" />
     <Compile Include="EnduranceActivity\UiCommands\SaveActivityUiCommand.cs" />
     <Compile Include="EnduranceActivity\UiCommands\StartActivityUiCommand.cs" />
     <Compile Include="EnduranceActivity\UiCommands\StopActivityUiCommand.cs" />
+    <Compile Include="EnduranceMain\EnduranceMainPresenter.cs" />
+    <Compile Include="EnduranceMain\EnduranceMainProductionEnvironment.cs" />
     <Compile Include="EnduranceMain\EnduranceMainView.xaml.cs">
       <DependentUpon>EnduranceMainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="EnduranceMain\EnduranceMainViewModel.cs" />
     <Compile Include="EnduranceMain\EnduranceViewModel.cs" />
-    <Compile Include="EnduranceMain\IEnduranceMainView.cs" />
+    <Compile Include="EnduranceMain\Interfaces\IEnduranceMainEnvironment.cs" />
+    <Compile Include="EnduranceMain\Interfaces\IEnduranceMainPresenter.cs" />
+    <Compile Include="EnduranceMain\Interfaces\IEnduranceMainView.cs" />
+    <Compile Include="EnduranceMain\Interfaces\IEnduranceMainViewModel.cs" />
     <Compile Include="EnduranceMain\UiCommands\OpenNewEnduranceUiCommand.cs" />
+    <Compile Include="EnduranceMain\UiCommands\OpenNewPurchaseUiCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -76,6 +87,18 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Purchase\Interfaces\IPurchaseEnvironment.cs" />
+    <Compile Include="Purchase\Interfaces\IPurchasePresenter.cs" />
+    <Compile Include="Purchase\Interfaces\IPurchaseView.cs" />
+    <Compile Include="Purchase\Interfaces\IPurchaseViewModel.cs" />
+    <Compile Include="Purchase\PurchasePresenter.cs" />
+    <Compile Include="Purchase\PurchaseProductionEnvironment.cs" />
+    <Compile Include="Purchase\PurchaseView.xaml.cs">
+      <DependentUpon>PurchaseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\PurchaseViewModel.cs" />
+    <Compile Include="Purchase\UiCommands\CancelPurchaseUICommand.cs" />
+    <Compile Include="Purchase\UiCommands\FinishPurchaseUICommand.cs" />
     <Compile Include="UiEnduranceInitializer.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -100,12 +123,29 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Purchase\PurchaseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SportsCompany.FitnessTracker.Endurance.Contracts\SportsCompany.FitnessTracker.Endurance.Contracts.csproj">
-      <Project>{ef8d8fc7-d1e0-49ed-b141-a8f22eb93318}</Project>
-      <Name>SportsCompany.FitnessTracker.Endurance.Contracts</Name>
+    <ProjectReference Include="..\SportsCompany.FitnessTracker.DependencyInjection\SportsCompany.FitnessTracker.DependencyInjection.csproj">
+      <Project>{7901912c-0b2f-41bf-aabe-479041902ef8}</Project>
+      <Name>SportsCompany.FitnessTracker.DependencyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsCompany.FitnessTracker.Domain\SportsCompany.FitnessTracker.Domain.csproj">
+      <Project>{5e2c7039-066b-4951-a448-2aa60b6dc97b}</Project>
+      <Name>SportsCompany.FitnessTracker.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsCompany.UIFramework.Windows\SportsCompany.UIFramework.Windows.csproj">
+      <Project>{d442c78f-398c-4ac1-bd0b-074e9e5ced0f}</Project>
+      <Name>SportsCompany.UIFramework.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SportsCompany.UIFramework\SportsCompany.UIFramework.csproj">
+      <Project>{a957ec1c-cc28-42fb-aa03-b0ef50500550}</Project>
+      <Name>SportsCompany.UIFramework</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

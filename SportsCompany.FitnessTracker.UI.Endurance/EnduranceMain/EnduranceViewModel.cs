@@ -1,11 +1,12 @@
-﻿using System.ComponentModel;
+﻿using SportsCompany.UIFramework;
+using System.ComponentModel;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain
 {
     /// <summary>
     /// View model which contains the data for an individual endurance activity.
     /// </summary>
-    class EnduranceViewModel : INotifyPropertyChanged
+    public class EnduranceViewModel : ViewModelBase
     {
         private int laps;
 
@@ -65,14 +66,6 @@ namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain
                 trainingEffect = value;
                 OnPropertyChanged(nameof(TrainingEffect));
             }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string v)
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(v));
         }
 
         public override string ToString()

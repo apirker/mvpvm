@@ -9,11 +9,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
-            <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Margin="10" Content="Start Running" Command="{Binding StartRunningUiCommand}"/>
-        <Button Grid.Row="1" Margin="10" Content="Start HIIT" Command="{Binding StartHiitUiCommand}" />
+        <Button Grid.Row="0" Margin="10" Content="Start Running" Command="{Binding StartRunningUiCommand}"
+                CommandParameter="{Binding}"/>
 
     </Grid>
 </Window>
