@@ -11,7 +11,7 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Margin="10" Content="Start Running" Command="{Binding StartRunningUiCommand}"
+        <Button Grid.Row="0" Margin="10" Content="Open Running Part" Command="{Binding StartRunningUiCommand}"
                 CommandParameter="{Binding}"/>
 
     </Grid>

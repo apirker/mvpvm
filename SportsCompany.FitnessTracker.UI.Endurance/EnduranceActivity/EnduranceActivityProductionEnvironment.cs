@@ -6,6 +6,9 @@ using System.Windows.Input;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity
 {
+    /// <summary>
+    /// Production environment for the endurance activity ui component.
+    /// </summary>
     class EnduranceActivityProductionEnvironment : EnvironmentBase<IEnduranceActivityPresenter>, IEnduranceActivityEnvironment
     {
         public EnduranceActivityProductionEnvironment(IContainer container) : base(container)

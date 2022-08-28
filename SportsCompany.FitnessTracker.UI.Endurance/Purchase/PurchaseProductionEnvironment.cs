@@ -6,6 +6,9 @@ using System.Windows.Input;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.Purchase
 {
+    /// <summary>
+    /// The production environment for the purchase ui component.
+    /// </summary>
     internal class PurchaseProductionEnvironment 
         : EnvironmentBase<IPurchasePresenter>
         , IPurchaseEnvironment

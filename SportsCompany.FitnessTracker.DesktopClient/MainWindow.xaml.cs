@@ -21,11 +21,16 @@ namespace SportsCompany.FitnessTracker.DesktopClient
         {
             InitializeComponent();
 
+            //boot strap the windows framework
             var container = UiFrameworkWindows.Initialize();
 
+            //register the ui parts for handling endurance
             UiEnduranceInitializer.Init(container);
+
+            //register the domain parts for handling endurance
             EnduranceDomainInitializer.Initialize(container);
 
+            //register the main view and the ui command to the DI container
             container.RegisterSingleton<MainWindowViewModel, MainWindowViewModel>();
             container.Register<ITriggeredCommand, StartRunningUiCommand>(nameof(StartRunningUiCommand));
 

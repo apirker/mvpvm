@@ -4,6 +4,9 @@ using System.Windows.Input;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain.Interfaces
 {
+    /// <summary>
+    /// Interface which defines the endurance main view model.
+    /// </summary>
     public interface IEnduranceMainViewModel : IViewModel
     {
         /// <summary>

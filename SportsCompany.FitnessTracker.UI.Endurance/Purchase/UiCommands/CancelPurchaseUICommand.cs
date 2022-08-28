@@ -4,6 +4,9 @@ using System.Windows;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.Purchase.UiCommands
 {
+    /// <summary>
+    /// UI command to cancel a dummy purchase
+    /// </summary>
     public class CancelPurchaseUICommand : UICommandBase<IPurchaseViewModel>
     {
         private readonly IPurchaseEnvironment purchaseEnvironment;

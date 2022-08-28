@@ -4,6 +4,9 @@ using System;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.Purchase
 {
+    /// <summary>
+    /// Presenter for the purchase ui component.
+    /// </summary>
     public class PurchasePresenter : IPurchasePresenter
     {
         private readonly IPurchaseEnvironment environment;

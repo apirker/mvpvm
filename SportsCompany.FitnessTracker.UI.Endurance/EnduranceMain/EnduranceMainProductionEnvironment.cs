@@ -10,6 +10,9 @@ using System.Windows.Input;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain
 {
+    /// <summary>
+    /// Environment implementation for the production main endurance ui component.
+    /// </summary>
     public class EnduranceMainProductionEnvironment : EnvironmentBase<IEnduranceMainPresenter>, IEnduranceMainEnvironment
     {
         public EnduranceMainProductionEnvironment(IContainer container) : base(container)

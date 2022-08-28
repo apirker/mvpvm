@@ -4,6 +4,9 @@ using System.Windows;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.Purchase.UiCommands
 {
+    /// <summary>
+    /// UI command to finish a purchase.
+    /// </summary>
     internal class FinishPurchaseUICommand : UICommandBase<IPurchaseViewModel>
     {
         private readonly IPurchaseEnvironment environment;

@@ -4,6 +4,9 @@ using System;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceActivity
 {
+    /// <summary>
+    /// Presenter of the endurance activity ui component.
+    /// </summary>
     public class EnduranceActivityPresenter : IEnduranceActivityPresenter
     {
         private readonly IEnduranceActivityEnvironment enduranceActivityEnvironment;

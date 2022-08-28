@@ -4,6 +4,9 @@ using SportsCompany.UIFramework;
 
 namespace SportsCompany.FitnessTracker.UI.Endurance.EnduranceMain.UiCommands
 {
+    /// <summary>
+    /// UI command to open a new purchase ui component.
+    /// </summary>
     internal class OpenNewPurchaseUiCommand : UICommandBase<IEnduranceMainViewModel>
     {
         private readonly IEnduranceMainEnvironment environment;
